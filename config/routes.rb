@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
-  resources :topics
-  put '/topics/:id/vote' => 'topics#vote'
 
-  # root :conferences
+  # root :conferences 
 
-  get '/conferences/:conference_id/topics' => 'topics#index'
-
-  resources :conferences
+  resources :conferences do
+    resources :topics do
+      member do
+        put :vote
+      end
+    end
+  end
   resources :schedules
   resources :schedule_slots
 
