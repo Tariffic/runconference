@@ -29,6 +29,8 @@ gem 'activeadmin', github: 'activeadmin'
 
 gem 'devise'
 
+gem 'activerecord-session_store'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -50,6 +52,8 @@ group :development, :test do
   gem 'spring'
 
   gem 'pry'
+
+  gem 'quiet_assets'
 
 end
 

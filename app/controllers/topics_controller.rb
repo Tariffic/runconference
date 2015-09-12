@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
 
   def index
+    # session[:votes]=30
     @votes = session[:votes]
     @topics = Topic.where(conference_id: params[:conference_id])
     respond_to do |format|
@@ -21,7 +22,7 @@ class TopicsController < ApplicationController
     confirm_save topic
   end
 
-  def vote
+  def vote    
     if(session[:votes]) > 0
       topic = Topic.find(params[:id])
       topic.update(points: (topic.points + 1))
@@ -29,7 +30,8 @@ class TopicsController < ApplicationController
       session[:votes] = session[:votes] - 1
 
     end
-    redirect_to conference_topics_url(params[:conference_id])
+    head :ok
+    # redirect_to conference_topics_url(params[:conference_id])
   end
 
   private

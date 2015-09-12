@@ -3,8 +3,9 @@ function disable_button(btn_id)
 {
   setTimeout(function() {
        location.reload();
-   }, 100);
-  
+   },1);
+  console.log("hit the disable_button");
+  return false; 
 }
 
 </script>
@@ -21,7 +22,7 @@ function disable_button(btn_id)
           <p><strong>Description: </strong><%= topic.description %></p>
           <p><strong>Facilitator: </strong><%= topic.facilitator %></p>
           <p><strong>Points: </strong><%= topic.points %></p>
-          <%= link_to "Vote", "/conferences/#{params[:conference_id]}/topics/#{topic.id}/vote", method: :put, class: "btn btn-primary", id: "btn_#{topic.id}" %>
+          <%= link_to "Vote", vote_conference_topic_path(params[:conference_id], topic.id), remote: true, method: :put, class: "btn btn-primary", id: "btn_#{topic.id}", onclick: 'disable_button("")' %>
           <br><br>
         </div>
       </div>
