@@ -1,8 +1,8 @@
 class TopicsController < ApplicationController
 
   def index
-    # session[:votes]=30
     @votes = session[:votes]
+    @voted = session[:topics]
     @topics = Topic.where(conference_id: params[:conference_id])
     respond_to do |format|
       format.html { render :index }
@@ -28,10 +28,10 @@ class TopicsController < ApplicationController
       topic.update(points: (topic.points + 1))
       topic.save
       session[:votes] = session[:votes] - 1
-
+      session[:topics] ||= {}
+      session[:topics][params[:id]] = session[:topics][params[:id]].to_i + 1
     end
-    head :ok
-    # redirect_to conference_topics_url(params[:conference_id])
+    redirect_to conference_topics_url(params[:conference_id])
   end
 
   private

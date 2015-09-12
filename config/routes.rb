@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users, ActiveAdmin::Devise.config
+
+  ActiveAdmin.routes(self)
   # root :conferences 
 
   resources :conferences do
@@ -9,6 +14,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  get 'topics/new' => 'topics#new'
   resources :schedules
   resources :schedule_slots
 

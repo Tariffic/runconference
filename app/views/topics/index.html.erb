@@ -1,32 +1,27 @@
-<script>
-function disable_button(btn_id)
-{
-  setTimeout(function() {
-       location.reload();
-   },1);
-  console.log("hit the disable_button");
-  return false; 
-}
-
-</script>
-
 <div class="container" role="main">
-  <div class="row">
-    <div class="col-lg-12">   
-      <h1>Conference Events</h1>
-      <h3>Votes Remaining: <%= @votes %></h3>
+  <div class="row" style="text-align: center">
+    <div class="col-lg-12">
+      <br><br>
+      <h1 style="text-align: center">Conference Events</h1>
+      <h3 style="text-align: center">Votes Remaining: <%= @votes %></h3>
       <% @topics.each do |topic| %>
-      <div class="card">
-        <div class="col-lg-12">
-          <p><strong>Name: </strong><%= topic.name %></p>
-          <p><strong>Description: </strong><%= topic.description %></p>
-          <p><strong>Facilitator: </strong><%= topic.facilitator %></p>
-          <p><strong>Points: </strong><%= topic.points %></p>
-          <%= link_to "Vote", vote_conference_topic_path(params[:conference_id], topic.id), remote: true, method: :put, class: "btn btn-primary", id: "btn_#{topic.id}", onclick: 'disable_button("")' %>
-          <br><br>
+        <div class="card" style="width: 85%; text-align: center">
+          <div class="col-lg-12" style="padding-left: 30px">
+            <br /><br />
+            <h3><strong>Name: </strong><%= topic.name %></h3>
+            <p><strong>Description: </strong><%= topic.description %></p>
+            <p><strong>Facilitator: </strong><%= topic.facilitator %></p>
+            <p>
+              <% for i in 1..@voted["#{topic.id}"].to_i do %>
+                <i class='mdi-action-favorite mdi-material-red'></i>
+              <% end %>
+            </p>
+            <%= link_to "Vote", vote_conference_topic_path(params[:conference_id], topic.id), method: :put, class: "btn btn-primary", id: "btn_#{topic.id}" %>
+            <br /><br /><br />
+          </div>
         </div>
-      </div>
+        <br><br>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>
