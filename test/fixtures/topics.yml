@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  type: 
+  description: MyText
+  facilitator: MyString
+  points: 1
+  conference: 
+
+two:
+  name: MyString
+  type: 
+  description: MyText
+  facilitator: MyString
+  points: 1
+  conference: 

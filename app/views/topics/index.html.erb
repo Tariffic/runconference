@@ -1,0 +1,20 @@
+<div class="row">
+
+<% @topics.each do |topic| %>
+    <div class="card">
+  <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
+        <p><strong>Name: </strong><%= topic.name %></p>
+        <p><strong>Description: </strong><%= topic.description %></p>
+        <p><strong>Facilitator: </strong><%= topic.facilitator %></p>
+        <p><strong>Points: </strong><%= topic.points %></p>
+        <p><button class="btn btn-success">Vote</button></p>
+      </div>
+    </div>
+    
+    <div class="col-lg-3"></div>
+<% end %>
+
+</div>
+</div>
