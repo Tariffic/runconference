@@ -1,9 +1,9 @@
-ActiveAdmin.register Topic do
+ActiveAdmin.register Schedule do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :name, :type, :description, :facilitator, :points, :conference_id, :schedule_slot_id
+permit_params :conference_id
 #
 # or
 #

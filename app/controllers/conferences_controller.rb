@@ -1,7 +1,7 @@
 class ConferencesController < ApplicationController
 
   def index
-    render json: Conference.all.to_json
+    @conferences = Conference.all
   end
 
   def show

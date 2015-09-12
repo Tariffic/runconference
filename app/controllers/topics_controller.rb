@@ -1,7 +1,9 @@
 class TopicsController < ApplicationController
 
   def index
+    session[:votes] = 3 if session[:votes].nil?
     @votes = session[:votes]
+    session[:topics] = {} if session[:topics].nil?
     @voted = session[:topics]
     @topics = Topic.where(conference_id: params[:conference_id])
     respond_to do |format|
@@ -12,6 +14,10 @@ class TopicsController < ApplicationController
 
   def show
     render json: Topic.find(params[:id]).to_json
+  end
+
+  def results
+    @topics = Topic.where(conference_id: params[:conference_id]).sort_by{|t| -t.points}
   end
 
   def new

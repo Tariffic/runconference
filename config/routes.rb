@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       end
     end
   end
+  root 'conferences#index'
+  get 'conferences/:conference_id/results' => 'topics#results'
   get 'topics/new' => 'topics#new'
   resources :schedules
   resources :schedule_slots
